@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -26,17 +27,28 @@ public class GlobalExceptionHandler {
         log.info("ClientAbortException is occurred. {}", e.toString());
     }
 
+    @ExceptionHandler(NoHandlerFoundException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public ErrorsResponse handleNoHandlerFoundException(
+            NoHandlerFoundException e,
+            Locale locale) {
+        e.printStackTrace();
+        return ErrorsResponse.create(
+                messageSource.getMessage("NoHandlerFoundException", null, locale),
+                null);
+    }
+
     @ExceptionHandler(IOException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ErrorsResponse handleIOException(IOException e, Locale locale) {
-        log.error(e.toString(), e);
+        e.printStackTrace();
         return ErrorsResponse.create(messageSource.getMessage("internalServerError", null, locale), null);
     }
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
     public ErrorsResponse handleUnhandledException(Exception e, Locale locale) {
-        log.error(e.toString(), e);
+        e.printStackTrace();
         return ErrorsResponse.create(messageSource.getMessage("internalServerError", null, locale), null);
     }
 }
