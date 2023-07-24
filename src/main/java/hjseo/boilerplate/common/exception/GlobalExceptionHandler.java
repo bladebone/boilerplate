@@ -19,12 +19,14 @@ import java.util.Locale;
 @RequiredArgsConstructor
 public class GlobalExceptionHandler {
 
+    private static final String DIRECTION_TO_ROOT = "/";
+
     private final MessageSource messageSource;
 
     @ExceptionHandler(ClientAbortException.class)
     @ResponseStatus(HttpStatus.RESET_CONTENT)
     public void handleClientAbortException(ClientAbortException e) {
-        log.info("ClientAbortException is occurred. {}", e.toString());
+        log.info("ClientAbortException is occurred. {}", e.getMessage());
     }
 
     @ExceptionHandler(NoHandlerFoundException.class)
@@ -35,7 +37,8 @@ public class GlobalExceptionHandler {
         e.printStackTrace();
         return ErrorsResponse.create(
                 messageSource.getMessage("NoHandlerFoundException", null, locale),
-                null);
+                null,
+                DIRECTION_TO_ROOT);
     }
 
     @ExceptionHandler(IOException.class)

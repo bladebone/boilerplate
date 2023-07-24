@@ -1,8 +1,8 @@
 package hjseo.boilerplate.common;
 
 import lombok.Getter;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.context.MessageSource;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 
@@ -16,7 +16,7 @@ public class SimpleErrorResponse {
     private final String redirectionUrl;
 
     public SimpleErrorResponse() {
-        this(StringUtils.EMPTY);
+        this(null);
     }
 
     public SimpleErrorResponse(String message) {
@@ -34,8 +34,9 @@ public class SimpleErrorResponse {
     }
 
     public static SimpleErrorResponse createByError(ObjectError error, MessageSource messageSource, Locale locale) {
-        if (StringUtils.isBlank(error.getCode()))
+        if (!StringUtils.hasLength(error.getCode())) {
             return new SimpleErrorResponse();
+        }
 
         String messageRow = generateRowNum(error, messageSource, locale);
 
