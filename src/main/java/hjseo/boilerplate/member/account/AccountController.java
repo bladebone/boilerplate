@@ -22,7 +22,7 @@ public class AccountController {
 
     @Operation(summary = "개별 회원 정보 조회")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "정상 조회", content = @Content(schema = @Schema(implementation = AccountResDto.class))),
+            @ApiResponse(responseCode = "200", description = "정상 조회", content = @Content(schema = @Schema(implementation = AccountResDtoLegacy.class))),
             @ApiResponse(responseCode = "204", description = "회원 정보 없음"),
             @ApiResponse(responseCode = "400", description = "잘못된 요청")
     })
