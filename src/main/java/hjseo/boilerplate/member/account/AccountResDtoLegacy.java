@@ -6,19 +6,19 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-@Schema(title = "회원정보")
+@Schema(description = "회원정보")
 @Getter
 @Setter(AccessLevel.PRIVATE)
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class AccountResDtoLegacy {
 
-    @Schema(name = "회원 ID")
+    @Schema(description = "회원 ID")
     private Long id;
 
-    @Schema(name = "이름")
+    @Schema(description = "이름")
     private String name;
 
-    @Schema(name = "이메일")
+    @Schema(description = "이메일")
     private String email;
 
     public static AccountResDtoLegacy of(Account account) {

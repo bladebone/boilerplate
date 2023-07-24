@@ -7,10 +7,10 @@ import java.util.Locale;
 
 public class DropboxItem {
 
-    @Schema(title = "표기명")
+    @Schema(description = "표기명")
     private final String label;
 
-    @Schema(title = "값")
+    @Schema(description = "값(코드)")
     private final String value;
 
     public DropboxItem(DropboxEnumModel dropboxEnumModel) {
