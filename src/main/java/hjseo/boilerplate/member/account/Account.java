@@ -23,7 +23,14 @@ public class Account extends BaseEntity {
     private String email;
 
     @Builder
-    public Account(Long id, String name, String email, Long createdBy, LocalDateTime createdAt, Long updatedBy, LocalDateTime updatedAt) {
+    public Account(
+            Long id,
+            String name,
+            String email,
+            Long createdBy,
+            LocalDateTime createdAt,
+            Long updatedBy,
+            LocalDateTime updatedAt) {
         this.id = id;
         this.name = name;
         this.email = email;
