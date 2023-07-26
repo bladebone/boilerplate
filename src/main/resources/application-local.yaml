@@ -1,0 +1,8 @@
+spring:
+  config:
+    activate:
+      on-profile: local
+    import: file:/Users/hjseo/.ssh/secret.properties
+
+messages:
+  file-pointer: classpath:/messages

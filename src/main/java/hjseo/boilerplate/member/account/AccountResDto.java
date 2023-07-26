@@ -1,6 +1,7 @@
 package hjseo.boilerplate.member.account;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.ToString;
 
 @Schema(description = "회원정보")
 public record AccountResDto(

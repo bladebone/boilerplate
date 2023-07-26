@@ -1,8 +1,4 @@
 spring:
-  config:
-    activate:
-      on-profile: local
-    import: file:/Users/hjseo/.ssh/secret.properties
   datasource:
     driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
     type: com.zaxxer.hikari.HikariDataSource
@@ -49,9 +45,6 @@ spring:
       matching-strategy: ant_path_matcher
     throw-exception-if-no-handler-found: true
     dispatch-options-request: false
-
-messages:
-  file-pointer: classpath:/messages
 
 server:
   port: 8081
