@@ -37,9 +37,9 @@ class AccountControllerTest {
                 .id(accountId)
                 .name(name)
                 .email(email)
+                .createdBy(1L)
+                .updatedBy(1L)
                 .build();
-        account.recordCreatedBy(1L);
-        account.recordUpdatedBy(1L);
         given(accountService.get(accountId)).willReturn(Optional.of(account));
 
         // when

@@ -27,7 +27,11 @@ class AccountServiceTest {
         final long accountId = 1L;
         final String name = "name";
         final String email = "email@domain.com";
-        final Account account = new Account(accountId, name, email);
+        final Account account = Account.builder()
+                .id(accountId)
+                .name(name)
+                .email(email)
+                .build();
         given(accountService.get(accountId)).willReturn(Optional.of(account));
 
         // when
